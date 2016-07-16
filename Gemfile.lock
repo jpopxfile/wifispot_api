@@ -78,6 +78,9 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    passenger (5.0.29)
+      rack
+      rake (>= 0.8.1)
     pkg-config (1.1.7)
     rack (1.6.4)
     rack-test (0.6.3)
@@ -169,6 +172,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2 (>= 0.3.13, < 0.5)
+  passenger
   rails (= 4.2.6)
   rspec-rails
   sass-rails (~> 5.0)
