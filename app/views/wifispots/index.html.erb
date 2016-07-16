@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wifispots</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Spot</th>
+      <th>Name jp</th>
+      <th>Name en</th>
+      <th>Status</th>
+      <th>Category</th>
+      <th>Usable place</th>
+      <th>Postcode</th>
+      <th>Prefecture</th>
+      <th>Address jp</th>
+      <th>Address en</th>
+      <th>Tel</th>
+      <th>Open time</th>
+      <th>Ssid</th>
+      <th>Usable time</th>
+      <th>Procedure</th>
+      <th>Lang support</th>
+      <th>Languages</th>
+      <th>Url</th>
+      <th>Y coord</th>
+      <th>X coord</th>
+      <th>Place code</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wifispots.each do |wifispot| %>
+      <tr>
+        <td><%= wifispot.spot_id %></td>
+        <td><%= wifispot.name_jp %></td>
+        <td><%= wifispot.name_en %></td>
+        <td><%= wifispot.status %></td>
+        <td><%= wifispot.category %></td>
+        <td><%= wifispot.usable_place %></td>
+        <td><%= wifispot.postcode %></td>
+        <td><%= wifispot.prefecture %></td>
+        <td><%= wifispot.address_jp %></td>
+        <td><%= wifispot.address_en %></td>
+        <td><%= wifispot.tel %></td>
+        <td><%= wifispot.open_time %></td>
+        <td><%= wifispot.ssid %></td>
+        <td><%= wifispot.usable_time %></td>
+        <td><%= wifispot.procedure %></td>
+        <td><%= wifispot.lang_support %></td>
+        <td><%= wifispot.languages %></td>
+        <td><%= wifispot.url %></td>
+        <td><%= wifispot.y_coord %></td>
+        <td><%= wifispot.x_coord %></td>
+        <td><%= wifispot.place_code %></td>
+        <td><%= link_to 'Show', wifispot %></td>
+        <td><%= link_to 'Edit', edit_wifispot_path(wifispot) %></td>
+        <td><%= link_to 'Destroy', wifispot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wifispot', new_wifispot_path %>

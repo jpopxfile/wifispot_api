@@ -1,0 +1,47 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  spot_id: 1
+  name_jp: MyString
+  name_en: MyString
+  status: MyString
+  category: MyString
+  usable_place: MyString
+  postcode: MyString
+  prefecture: MyString
+  address_jp: MyString
+  address_en: MyString
+  tel: MyString
+  open_time: MyString
+  ssid: MyString
+  usable_time: MyString
+  procedure: MyString
+  lang_support: MyString
+  languages: MyString
+  url: MyString
+  y_coord: 1.5
+  x_coord: 1.5
+  place_code: MyString
+
+two:
+  spot_id: 1
+  name_jp: MyString
+  name_en: MyString
+  status: MyString
+  category: MyString
+  usable_place: MyString
+  postcode: MyString
+  prefecture: MyString
+  address_jp: MyString
+  address_en: MyString
+  tel: MyString
+  open_time: MyString
+  ssid: MyString
+  usable_time: MyString
+  procedure: MyString
+  lang_support: MyString
+  languages: MyString
+  url: MyString
+  y_coord: 1.5
+  x_coord: 1.5
+  place_code: MyString

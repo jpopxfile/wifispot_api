@@ -1,0 +1,2 @@
+module WifispotsHelper
+end
