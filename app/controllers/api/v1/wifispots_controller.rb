@@ -38,7 +38,7 @@ class Api::V1::WifispotsController < ApplicationController
 
       args = [query_string, y_coord, x_coord, y_coord, distance, count]
 
-      wifispots = exec_sql_query(args)[0]
+      wifispots = exec_sql_query(args)
 
       render json: wifispots
     end
@@ -60,7 +60,7 @@ class Api::V1::WifispotsController < ApplicationController
       
       args = [query_string, search_string, search_string, count]
 
-      wifispots = exec_sql_query(args)[0]
+      wifispots = exec_sql_query(args)
 
       render json: wifispots
     end
