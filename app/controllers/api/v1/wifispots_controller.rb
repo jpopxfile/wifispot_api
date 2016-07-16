@@ -19,46 +19,51 @@ class Api::V1::WifispotsController < ApplicationController
   end
 
   def by_gps
-#To do: validate parameters
 
     (x_coord = params[:x_coord].to_f) rescue nil
     (y_coord = params[:y_coord].to_f) rescue nil
 
-    (temp_distance = Integer(params[:distance])) rescue nil
-    (temp_count = Integer(params[:count])) rescue nil
+    if x_coord != nil and y_coord != nil
 
-    name, address = set_lang(params[:lang])
+      (temp_distance = Integer(params[:distance])) rescue nil
+      (temp_count = Integer(params[:count])) rescue nil
 
-    distance = set_distance(temp_distance)
+      name, address = set_lang(params[:lang])
 
-    count = set_count(temp_count)
+      distance = set_distance(temp_distance)
 
-    query_string = "select #{name}, #{address}, #{DISTANCE_DEF} from wifispots having distance <= ? order by distance ASC limit ? "
+      count = set_count(temp_count)
 
-    args = [query_string, y_coord, x_coord, y_coord, distance, count]
+      query_string = "select #{name}, #{address}, #{DISTANCE_DEF} from wifispots having distance <= ? order by distance ASC limit ? "
 
-    wifispots = exec_sql_query(args)
+      args = [query_string, y_coord, x_coord, y_coord, distance, count]
 
-    render json: wifispots
+      wifispots = exec_sql_query(args)
+
+      render json: wifispots
+    end
+
   end
 
   def search
 
-    (temp_count = Integer(params[:count])) rescue nil
-
-    name, address = set_lang(params[:lang])
-
-    count = set_count(temp_count)
-
     search_string = params[:s]
 
-    query_string = "select #{name}, #{address} from wifispots where #{name} like CONCAT('%', ?, '%') or #{address} like CONCAT('%', ?, '%') limit ? "
-    
-    args = [query_string, search_string, search_string, count]
+    if search_string != ""
 
-    wifispots = exec_sql_query(args)
+      (temp_count = Integer(params[:count])) rescue nil
 
-    render json: wifispots
+      name, address = set_lang(params[:lang])
+
+      count = set_count(temp_count)
+      query_string = "select #{name}, #{address} from wifispots where #{name} like CONCAT('%', ?, '%') or #{address} like CONCAT('%', ?, '%') limit ? "
+      
+      args = [query_string, search_string, search_string, count]
+
+      wifispots = exec_sql_query(args)
+
+      render json: wifispots
+    end
   end
 
   def exec_sql_query(args)
