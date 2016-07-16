@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'main#about'
   namespace :api do
     namespace :v1 do
       resources :wifispots, only: [:index]
@@ -7,7 +8,7 @@ Rails.application.routes.draw do
 
     end
   end
-  get "*path" => redirect("/")
+  get '*path' => redirect("/")
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
