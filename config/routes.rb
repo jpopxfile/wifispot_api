@@ -4,8 +4,10 @@ Rails.application.routes.draw do
       resources :wifispots, only: [:index]
       get ':lang/wifispots/gps' => 'wifispots#by_gps', :as => :gps
       get ':lang/wifispots/search' => 'wifispots#search', :as => :search
+
     end
   end
+  get "*path" => redirect("/")
 end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
