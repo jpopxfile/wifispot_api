@@ -34,7 +34,7 @@ class Api::V1::WifispotsController < ApplicationController
 
       count = set_count(temp_count)
 
-      query_string = "select #{name}, #{address}, #{DISTANCE_DEF} from wifispots having distance <= ? order by distance ASC limit ? "
+      query_string = "select #{name}, #{address}, #{DISTANCE_DEF}, y_coord, x_coord from wifispots having distance <= ? order by distance ASC limit ? "
 
       args = [query_string, y_coord, x_coord, y_coord, distance, count]
 
@@ -56,7 +56,7 @@ class Api::V1::WifispotsController < ApplicationController
       name, address = set_lang(params[:lang])
 
       count = set_count(temp_count)
-      query_string = "select #{name}, #{address} from wifispots where #{name} like CONCAT('%', ?, '%') or #{address} like CONCAT('%', ?, '%') limit ? "
+      query_string = "select #{name}, #{address}, y_coord, x_coord from wifispots where #{name} like CONCAT('%', ?, '%') or #{address} like CONCAT('%', ?, '%') limit ? "
       
       args = [query_string, search_string, search_string, count]
 
