@@ -40,7 +40,7 @@ class Api::V1::WifispotsController < ApplicationController
 
       wifispots = exec_sql_query(args)
 
-      render json: wifispots
+      render :json => wifispots
     end
   end
 
@@ -61,7 +61,7 @@ class Api::V1::WifispotsController < ApplicationController
 
       wifispots = exec_sql_query(args)
 
-      render json: wifispots
+      render :json => wifispots
     end
   end
 
