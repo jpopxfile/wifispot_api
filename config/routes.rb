@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'main#about'
   namespace :api do
     namespace :v1 do
-      resources :wifispots, only: [:index]
+      resources :wifispots
       get ':lang/wifispots/gps' => 'wifispots#by_gps', :as => :gps
       get ':lang/wifispots/search' => 'wifispots#search', :as => :search
 

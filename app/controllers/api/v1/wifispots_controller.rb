@@ -1,9 +1,12 @@
 class Api::V1::WifispotsController < ApplicationController
 
+  #Default if not specified
   DISTANCE_CONSTANT = 500
   COUNT_CONSTANT = 5
   NAME = "name_jp"
   ADDRESS = "address_jp"
+  
+  #FOR SQL QUERY TO GET DISTANCE FROM COORDINATES
   DISTANCE_DEF = "(
       1000 * 3959 * acos (
       cos ( radians(?) )
@@ -14,12 +17,9 @@ class Api::V1::WifispotsController < ApplicationController
     ) 
     ) as distance"
 
-  def index
 
-  end
-
+  #To get nearest n wifispots from coordinates
   def by_gps
-
     (x_coord = params[:x_coord].to_f) rescue nil
     (y_coord = params[:y_coord].to_f) rescue nil
 
@@ -42,11 +42,10 @@ class Api::V1::WifispotsController < ApplicationController
 
       render json: wifispots
     end
-
   end
 
+  #Search for n wifispots containing the keyword in the name or address
   def search
-
     search_string = params[:s]
 
     if search_string != ""
@@ -66,6 +65,7 @@ class Api::V1::WifispotsController < ApplicationController
     end
   end
 
+
   def exec_sql_query(args)
     sql = ActiveRecord::Base.send(:sanitize_sql_array, args)
     results = ActiveRecord::Base.connection.select_all(sql)
@@ -84,7 +84,6 @@ class Api::V1::WifispotsController < ApplicationController
     if distance == nil or distance < 0
       distance = DISTANCE_CONSTANT
     end
-
     return distance
   end
 
@@ -92,7 +91,6 @@ class Api::V1::WifispotsController < ApplicationController
     if count == nil or count < 0
       count = COUNT_CONSTANT
     end
-
     return count
   end
 
