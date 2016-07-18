@@ -10,7 +10,9 @@ This is a JSON API that has 2 features:
 1. Returns n nearest wifispots in Japan, from provided x (longitude) and y (latitude) coordinates
 2. Returns n matches in name/address of wifispots in Japan matching provided keyword
 
-For both, the count and language(Japanese/English can be specified).
+For both, the count and language(Japanese/English) can be specified.
+
+
 
 
 #JSON API
@@ -31,6 +33,8 @@ Parameters:
 Any request lacking the x/y coordinates will redirect to /, where instructons on how to use the API are written.
 
 
+
+
 ##Search
 ###api/v1/(jp/en)/wifispots/search
 Example: api/v1/jp/wifispots/search?s=新宿&count=10
@@ -43,9 +47,12 @@ Parameters:
 * Lang (jp/en. Default is jp)
 
 
+
+
 #Configuration
 ##config/database.yml.bak
 Set the username and password for Mysql and save the file as database.yml
+
 
 ##Creating and initializing the database
 ```
@@ -53,6 +60,7 @@ rake db:create
 rake db:migrate
 rake import:wifispot
 ```
+
 
 #Testing
 TBD
