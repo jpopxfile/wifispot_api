@@ -20,36 +20,44 @@ class Api::V1::WifispotsController < ApplicationController
 
   #To get nearest n wifispots from coordinates
   def by_gps
-    (x_coord = params[:x_coord].to_f) rescue nil
-    (y_coord = params[:y_coord].to_f) rescue nil
+    if params[:x_coord].to_s.strip.length != 0 and params[:y_coord].to_s.strip.length != 0
 
-    if x_coord != nil and y_coord != nil
+      (x_coord = params[:x_coord].to_f) rescue nil
+      (y_coord = params[:y_coord].to_f) rescue nil
 
-      (temp_distance = Integer(params[:distance])) rescue nil
-      (temp_count = Integer(params[:count])) rescue nil
+      if x_coord != nil or y_coord != nil
 
-      name, address = set_lang(params[:lang])
+        (temp_distance = Integer(params[:distance])) rescue nil
+        (temp_count = Integer(params[:count])) rescue nil
 
-      distance = set_distance(temp_distance)
+        name, address = set_lang(params[:lang])
 
-      count = set_count(temp_count)
+        distance = set_distance(temp_distance)
 
-      query_string = "select #{name}, #{address}, #{DISTANCE_DEF}, y_coord, x_coord from wifispots having distance <= ? order by distance ASC limit ? "
+        count = set_count(temp_count)
 
-      args = [query_string, y_coord, x_coord, y_coord, distance, count]
+        query_string = "select #{name}, #{address}, #{DISTANCE_DEF}, y_coord, x_coord from wifispots having distance <= ? order by distance ASC limit ? "
 
-      wifispots = exec_sql_query(args)
+        args = [query_string, y_coord, x_coord, y_coord, distance, count]
 
-      render :json => wifispots
+        wifispots = exec_sql_query(args)
+
+        render :json => wifispots
+
+      end
+    else
+      redirect_to root_path
     end
   end
 
   #Search for n wifispots containing the keyword in the name or address
   def search
-    search_string = params[:s]
 
-    if search_string != ""
+    if params[:s].to_s.strip.length != 0
 
+      search_string = params[:s]
+
+      
       (temp_count = Integer(params[:count])) rescue nil
 
       name, address = set_lang(params[:lang])
@@ -62,6 +70,8 @@ class Api::V1::WifispotsController < ApplicationController
       wifispots = exec_sql_query(args)
 
       render :json => wifispots
+    else
+      redirect_to root_path
     end
   end
 
