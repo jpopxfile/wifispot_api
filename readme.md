@@ -71,3 +71,7 @@ mysqldump -u <user> -p wifispot_api_development > temp.sql
 mysql -u <user> -p wifispot_api_test < temp.sql
 ```
 
+##Running tests
+```
+rspec spec/controllers/wifispots_controllers_spec.rb
+```
