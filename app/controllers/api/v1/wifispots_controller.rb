@@ -46,7 +46,7 @@ class Api::V1::WifispotsController < ApplicationController
 
       end
     else
-      redirect_to root_path
+      render :nothing => true, :status => 204
     end
   end
 
@@ -71,7 +71,7 @@ class Api::V1::WifispotsController < ApplicationController
 
       render :json => wifispots
     else
-      redirect_to root_path
+      render :nothing => true, :status => 204
     end
   end
 
