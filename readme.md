@@ -65,4 +65,9 @@ rake import:wifispot
 
 
 #Testing
-TBD
+##Cloning test database:
+```
+mysqldump -u <user> -p wifispot_api_development > temp.sql
+mysql -u <user> -p wifispot_api_test < temp.sql
+```
+
