@@ -31,7 +31,7 @@ Parameters:
 * X_coord (Longitude. Required)
 * Lang (jp/en. Default is jp)
 
-Any request lacking the x/y coordinates will redirect to /, where instructons on how to use the API are written.
+Any request lacking the x/y coordinates will return a 204 code.
 
 
 
@@ -48,7 +48,7 @@ Parameters:
 * s (Search keyword)
 * Lang (jp/en. Default is jp)
 
-
+Any request lacking the s will return a 204 code.
 
 
 #Configuration
