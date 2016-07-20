@@ -171,6 +171,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  json
   mysql2 (>= 0.3.13, < 0.5)
   passenger
   rails (= 4.2.6)
