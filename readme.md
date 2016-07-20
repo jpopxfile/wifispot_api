@@ -52,7 +52,7 @@ Parameters:
 
 
 #Configuration
-##config/database.yml.bak
+##config/database.yml.example
 Set the username and password for Mysql and save the file as database.yml
 
 
