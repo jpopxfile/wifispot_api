@@ -1,10 +1,9 @@
-#Introduction
+# Introduction
 
-##Ruby Version: 
+## Ruby Version: 
 ruby 2.3.1p112
 
-##Deployed URL
-http://ec2-52-42-23-231.us-west-2.compute.amazonaws.com/
+# JSON API
 
 This is a JSON API that has 2 features:
 * Returns n nearest wifispots in Japan, from provided x (longitude) and y (latitude) coordinates
@@ -12,12 +11,8 @@ This is a JSON API that has 2 features:
 
 For both, the count and language(Japanese/English) can be specified.
 
-
-
-
-#JSON API
-##GPS
-###/api/v1/(jp/en)/wifispots/gps
+## GPS
+### /api/v1/(jp/en)/wifispots/gps
 Example: /api/v1/jp/wifispots/gps?distance=1000&count=5&y_coord=35.76410755&x_coord=140.3845965
 
 Example response: 
@@ -36,8 +31,8 @@ Any request lacking the x/y coordinates will return a 204 code.
 
 
 
-##Search
-###api/v1/(jp/en)/wifispots/search
+## Search
+### api/v1/(jp/en)/wifispots/search
 Example: api/v1/jp/wifispots/search?s=新宿&count=10
 
 Example response:
@@ -51,12 +46,12 @@ Parameters:
 Any request lacking the s will return a 204 code.
 
 
-#Configuration
-##config/database.yml.example
+# Configuration
+## config/database.yml.example
 Set the username and password for Mysql and save the file as database.yml
 
 
-##Creating and initializing the database
+## Creating and initializing the database
 ```
 rake db:create
 rake db:migrate
@@ -64,14 +59,14 @@ rake import:wifispot
 ```
 
 
-#Testing
-##Cloning test database:
+# Testing
+## Cloning test database:
 ```
 mysqldump -u <user> -p wifispot_api_development > temp.sql
 mysql -u <user> -p wifispot_api_test < temp.sql
 ```
 
-##Running tests
+## Running tests
 ```
 rspec spec/controllers/wifispots_controllers_spec.rb
 ```
